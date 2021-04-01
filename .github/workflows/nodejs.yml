@@ -32,8 +32,8 @@ jobs:
     steps:
       - name: Login To Heroku
         uses: actions/checkout@v1 
-      env: 
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        env: 
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: heroku login
 
       - name: Add remote origin
