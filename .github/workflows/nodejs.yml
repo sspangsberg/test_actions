@@ -43,6 +43,7 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
+          echo $HEROKU_API_KEY
           npm install
           npm test
 
