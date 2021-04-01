@@ -26,15 +26,15 @@ jobs:
         npm test
   
   deploy:
-      name: Deploy
-      runs-on: ubuntu-latest
+    name: Deploy
+    runs-on: ubuntu-latest
       
-      steps: 
-        - name: Checkout
-          uses: actions/checkout@v1
-        
-        - name: Using vars
-          env:
-            HEROKU_API_KEY:  ${{ secrets.HEROKU_API_KEY }} 
-        - run: echo $HEROKU_API_KEY
+    steps: 
+    - name: Checkout
+      uses: actions/checkout@v1
+       
+    - name: Using vars
+      env:
+        HEROKU_API_KEY:  ${{ secrets.HEROKU_API_KEY }} 
+    - run: echo $HEROKU_API_KEY
         
