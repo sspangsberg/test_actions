@@ -1,0 +1,23 @@
+{
+  "name": "node_heroku_deployment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mocha": "^8.3.2"
+  },
+  "engines": {
+    "node": "^14.16.0",
+    "npm": "^6.14.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "NODE_ENV=test mocha",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
