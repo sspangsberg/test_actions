@@ -4,7 +4,7 @@ const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 
-app.get("/welcome2", (req,res) => {
+app.get("/welcome", (req,res) => {
     res.status(200).send({message: "I'm alive..."});
   }); 
 
