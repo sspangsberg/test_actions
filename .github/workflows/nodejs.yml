@@ -1,10 +1,13 @@
 name: Node.JS CI
 
-on: [push]
+on: 
+  push: 
+    branches: [main]
 
 jobs: 
-  build:
+  test:
 
+    name: Test
     runs-on: ubuntu-latest
 
     strategy: 
@@ -21,3 +24,18 @@ jobs:
       run: | 
         npm install
         npm test
+  
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+    
+      - name: Add remote origin
+        run: git remote add heroku https://heroku:{{ secrets:HEROKU_API_KEY }}@git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git
+      
+      - name: Deploy backend to Heroku
+        run: git push heroku main
+  
