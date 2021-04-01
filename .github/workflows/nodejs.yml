@@ -26,20 +26,15 @@ jobs:
         npm test
   
   deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Login To Heroku
-      - uses: actions/checkout@v1 
-        env: 
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku login
-
-      - name: Add remote origin
-        run: git remote add heroku https://${{ secrets.HEROKU_APP_NAME }}.git
+      name: Deploy
+      runs-on: ubuntu-latest
       
-      - name: Deploy backend to Heroku
-        run: git push heroku master
-
-  
+      steps: 
+        - name: Checkout
+          uses: actions/checkout@v1
+        
+        - name: Using vars
+          env:
+            HEROKU_API_KEY:  ${{ secrets.HEROKU_API_KEY }} 
+        - run: echo $HEROKU_API_KEY
+        
