@@ -40,6 +40,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: npm install, build and test
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
           npm install
           npm test
