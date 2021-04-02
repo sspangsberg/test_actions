@@ -30,11 +30,11 @@ jobs:
 
       - name: Push .env to directory
         run: |
-          git add .
-          git commit -m "environment variables"
           git config user.email "smsj@easv.dk"
           git config user.name "sspangsberg"
-
+          git add .
+          git commit -m "environment variables"
+          
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
