@@ -19,22 +19,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Create .env file
-        run: |
-          touch .env
-          echo DBHOST=${{ secrets.DBHOST }} >> .env
-
-      - name: Delete gitignore
-        run: |
-          rm .gitignore
-
-      - name: Push .env to directory
-        run: |
-          git config user.email "smsj@easv.dk"
-          git config user.name "sspangsberg"
-          git add .
-          git commit -m "environment variables"
-          
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -43,6 +27,8 @@ jobs:
         run: |
           npm install
           npm test
+        env:
+          DBHOST: ${{ secrets.DBHOST }}
 
   deploy:
     needs: [test]
