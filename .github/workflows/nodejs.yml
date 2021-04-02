@@ -8,15 +8,35 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    env:
+      DBHOST: mongodb+srv://dbuser:1234@cluster0.wmgzy.mongodb.net/shop_db_test?retryWrites=true&w=majority
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [14.x]
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Create .env file
+        run: |
+          touch .env
+          echo DBHOST=${{ secrets.DBHOST }} >> .env
+
+      - name: Delete gitignore
+        run: |
+          rm .gitignore
+
+      - name: Push .env to directory
+        run: |
+          git add .
+          git commit -m "environment variables"
+
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
       - name: npm install, build and test
