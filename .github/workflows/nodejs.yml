@@ -44,7 +44,6 @@ jobs:
           npm install
           npm test
 
-
   deploy:
     needs: [test]
     name: Deploy
