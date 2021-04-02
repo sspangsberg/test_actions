@@ -12,7 +12,7 @@ describe('/First Test Collection', () => {
         chai.request(server)
         .get('/welcome')
         .end((err, res) => {
-            expect(res.status).to.be.equal(200);
+            expect(res.status).to.be.equal(201);
             done();
         });
     });
