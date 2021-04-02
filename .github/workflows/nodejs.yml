@@ -8,16 +8,14 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    env:
-      DBHOST: mongodb+srv://dbuser:1234@cluster0.wmgzy.mongodb.net/shop_db_test?retryWrites=true&w=majority
-
+   
     strategy:
       matrix:
         node-version: [14.x]
 
     steps:
       - name: Checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
