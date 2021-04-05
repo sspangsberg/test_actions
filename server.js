@@ -8,6 +8,11 @@ app.get("/welcome", (req,res) => {
     res.status(200).send({message: "I'm alive..."});
   }); 
 
+  app.get("/welcome2", (req,res) => {
+    res.status(200).send({message: "I'm alive2..."});
+  }); 
+
+
 //Simulate db connection
 console.log("DBHOST:" + process.env.DBHOST);
 
